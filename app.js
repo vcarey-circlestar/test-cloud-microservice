@@ -31,7 +31,10 @@ app.get('/', async (req, res) => {
 
 // Another endpoint with a parameter
 app.get('/greet/:name', async (req, res) => {
+
   const name = req.params.name; // Access the 'name' parameter from the URL
+  // Use basic logger without HTTP request info
+  logger.info({logField: 'custom-entry', arbitraryField: 'custom-entry'}); 
   req.log.info(`Greeting ${name}`);
   res.send(`Hello, ${name}!`);
 });
@@ -39,6 +42,8 @@ app.get('/greet/:name', async (req, res) => {
 // Another endpoint with a query parameter
 app.get('/query', async (req, res) => {
   const message = req.query.message; // Access the 'message' query parameter
+  // Use basic logger without HTTP request info
+  logger.info({logField: 'custom-entry', arbitraryField: 'custom-entry'}); 
   req.log.info(`Received message: ${message}`);
   res.send(`You sent: ${message}`);
 });
