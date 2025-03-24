@@ -29,4 +29,19 @@ app.get('/', async (req, res) => {
   res.send('Hello World!');
 });
 
+// Another endpoint with a parameter
+app.get('/greet/:name', async (req, res) => {
+  const name = req.params.name; // Access the 'name' parameter from the URL
+  req.log.info(`Greeting ${name}`);
+  res.send(`Hello, ${name}!`);
+});
+
+// Another endpoint with a query parameter
+app.get('/query', async (req, res) => {
+  const message = req.query.message; // Access the 'message' query parameter
+  req.log.info(`Received message: ${message}`);
+  res.send(`You sent: ${message}`);
+});
+
+
 export default app;
